@@ -4,7 +4,7 @@ Filebeat module for Squid access logs + Kibana dashboards. ELK 6.5
 # TL;DR<p>
 Collect your squid access.log with Filebeat, send directly to Elasticsearch and watch result on Kibana dashboard.
 
-![](_images\kibana_dashboard_example.png)
+![](_images/kibana_dashboard_example.png)
 
 
 # Filebeat + module squid installation
