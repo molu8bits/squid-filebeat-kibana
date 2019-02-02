@@ -1,0 +1,25 @@
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /var/log/*.log
+
+
+
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: true
+
+
+setup.template.settings:
+  index.number_of_shards: 3
+
+setup.dashboards.enabled: true
+
+setup.template.enabled: true
+setup.template.json.enabled: false
+setup.template.overwrite: true
+
+
+output.elasticsearch:
+  hosts: ["elasticsearch.local:9200"]

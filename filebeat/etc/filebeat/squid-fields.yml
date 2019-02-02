@@ -1,0 +1,72 @@
+- key: squid
+  title: "Squid"
+  description: >
+    Squid Module
+  short_config: true
+  fields:
+    - name: squid
+      type: group
+      description: >
+        Squid fields.
+      fields:
+        - name: access
+          type: group
+          description: >
+            Contains fields for the Squid proxy access logs.
+          fields:
+            - name: dst_ip
+              type: keyword
+              description: >
+                Client IP address.
+            - name: method
+              type: keyword
+              example: GET
+              description: >
+                The request HTTP method.
+            - name: request_url
+              type: keyword
+              description: >
+                The request HTTP URL.
+            - name: http_method
+              type: keyword
+              description: >
+                The HTTP method.
+            - name: reply_size_include_header
+              type: float
+              description: >
+                Reply size including header.
+            - name: response_time
+              type: float
+              description: >
+                Response Time.
+            - name: geoip
+              type: group
+              description: >
+                Contains GeoIP information gathered based on the dst_ip field.
+                Only present if the GeoIP Elasticsearch plugin is available and
+                used.
+              fields:
+                - name: continent_name
+                  type: keyword
+                  description: >
+                    The name of the continent.
+                - name: country_iso_code
+                  type: keyword
+                  description: >
+                    Country ISO code.
+                - name: location
+                  type: geo_point
+                  description: >
+                    The longitude and latitude.
+                - name: region_name
+                  type: keyword
+                  description: >
+                    The region name.
+                - name: city_name
+                  type: keyword
+                  description: >
+                    The city name.
+                - name: region_iso_code
+                  type: keyword
+                  description: >
+                    Region ISO code.

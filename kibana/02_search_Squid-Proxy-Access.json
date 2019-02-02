@@ -1,0 +1,27 @@
+[
+  {
+    "_id": "Squid-Proxy-Access",
+    "_type": "search",
+    "_source": {
+      "title": "Squid Proxy Access",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "squid.access.src_ip",
+        "squid.access.http_method",
+        "squid.access.http_protocol",
+        "squid.access.dst_host",
+        "squid.access.request_url",
+        "squid.access.squid_request_status"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"filebeat-*\",\"query\":{\"query\":{\"query_string\":{\"query\":\"_exists_:squid.access\",\"analyze_wildcard\":true}},\"language\":\"lucene\"},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
+      }
+    }
+  }
+]

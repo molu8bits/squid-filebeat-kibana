@@ -7,21 +7,47 @@ Collect your squid access.log with Filebeat, send directly to Elasticsearch and 
 ![](_images/kibana_dashboard_example.png)
 
 
+# Elastichsearch and Kibana
+1. Elasticsearch and Kibana
+    a.)Install Elasticsearch and Kibana.
+    b.) Configure firewall to allow access from filebeat host to elasticsearch service.
+    c.) enable plugins "ingest-geoip":
+    ```bash
+    bin/elasticsearch-plugin install ingest-geoip"
+    ```
+
+
 # Filebeat + module squid installation
-1. Configuration Filebeat (6.5 recommended. 5.x should work as well)
-   ...
+2. Configuration Filebeat (6.5 recommended. 5.x should work as well)
+   a.) copy filebeat/module/squid into /usr/share/filebeat/module
+   b.) copy filebeat/etc/filebeat/modules.d/squid.yml.disabled into /etc/filebeat/modules.d
+   c.) configure /etc/filebeat/filebeat.yml - reference file placed in /etc/filebeat/filebeat.yml
+        (change  hosts ["elasticsearch.local"] in section output.elastichsearch to elastichsarch instance listening from filebeat host
+   d.) enable Filebeat squid module by command "filebeat modules enable squid" (or just rename /etc/filebeat/modules.d/squid.yml.disabled to /etc/filename/modules.d/squid.yml
+   e.) restart Filebeat service - "systemctl restart filebeat"
 
-# Installation Elasticserch/Kibana using docker containers
-1. Run elasticsearch
-   ...
-2. Run kibana
-   ...
-3. Import Kibana dashboard
-   ...
-# Run filebeat, watch for logs and dashboard:
-1. Run filebeat instance on Squid server
-   ...
-2. Filebeat logs
+# Kibana configuration
+3. Import object into Kibana (via GUI: Management -> Saved Objects -> import) using following order
+   (Dashboard requires the visualisations and the search object - they must be imported successfully first)
+   a.) 01_visualisations_All.json
+   b.) 02_search_Squid-Proxy-Access.json
+   c.) 03_Filebeat-Squid-Dashboard.json
 
-# TODO
-Complete README.md ;)
+# Check Dashboard view on Kibana
+4. Go to the Dashboard section and find "Filebeat-Squid-Dashboard". Set Time-Range according logs from Squid
+
+
+
+# Troubleshooting
+Elasticsearch needs to know what types should be applied to particular fields during processing logs.
+For squid they exist in filebeat/module/squid/access/_meta/fields.yml.
+If they are not applied automatically on the Filebeat Index (and default, incorrect mapping exists)
+then apply following procedure to enforce them once again:
+Add content of "filebeat/etc/squid-fields.yml" to /etc/filebeat/fields.yml, remove existing pipleline
+then restart filebeat service e.g.
+```bash
+cat filebeat/etc/squid-fields.yml >> /etc/filebeat/fields.yml
+curl -XDELETE elasticsearch.local:9200/filebeat-index-name
+curl -XDELETE elasticsearch.local:9200/_ingest/pipeline/filebeat*squid*
+systemctl restart filebeat
+```
