@@ -58,4 +58,4 @@ systemctl restart filebeat
 - add required elements by Elastic Beats and create pull request to https://github.com/elastic/beats/
 - add new visualisation as json:
 
-![](_images\squid_downloaded_per_host.png.png)
+![](_images/squid_downloaded_per_host.png.png)
