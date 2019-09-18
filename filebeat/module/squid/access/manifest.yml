@@ -4,11 +4,16 @@ var:
   - name: paths
     default:
       - /var/log/squid/access.log*
+    os.darwin:
+      - /var/log/squid/access.log*
+    os.windows:
+      - c:/squid/var/log/access.log*
 
-ingest_pipeline: ingest/default.json
+ingest_pipeline: ingest/pipeline.json
 input: config/access.yml
 
-requires.processors:
+require.processors:
+- name: user_agent
+  plugin: ingest-user-agent
 - name: geoip
   plugin: ingest-geoip
-

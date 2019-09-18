@@ -1,4 +1,3 @@
 dashboards:
-- id: Filebeat-Squid-Dashboard
-  file: Filebeat-squid.json
-
+- id: Filebeat-squid-access-Dashboard
+  file: Filebeat-squid-access.json

@@ -1,11 +1,9 @@
 - key: squid
-  title: "Squid"
+  title: "squid"
   description: >
-    Squid Module
-  short_config: true
+    squid Module
   fields:
     - name: squid
       type: group
       description: >
-        squid fields.
-fields:
+      fields:

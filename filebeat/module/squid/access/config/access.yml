@@ -4,4 +4,3 @@ paths:
  - {{$path}}
 {{ end }}
 exclude_files: [".gz$"]
-
