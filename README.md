@@ -28,7 +28,7 @@ Get overview of Squid access log using Kibana dashboard.
    <p>e.) Replace /etc/filebeat/filebeat.yml with filebeat/etc/fields.yml from repo. (Before run filebeat - Critical !). This file is a compiled version from 7.3 so the rest of functionality will work.
    <p>f.) restart Filebeat service - "systemctl restart filebeat"
 
-<h4>Kibana configuration <h4>
+<h4>Kibana configuration </h4>
 3. Import object into Kibana (via GUI: Management -> Saved Objects -> import) using following order
    (Dashboard requires the visualisations and the search object - they must be imported successfully first)
    <p>a.) 01_visualisations_All.json
@@ -55,7 +55,8 @@ systemctl restart filebeat
 ```
 
 <h4> TODO: </h4>
-- add required elements by Elastic Beats and create pull request to https://github.com/elastic/beats/
-- add new visualisation as json:
+
+<p> - add required elements by Elastic Beats and create pull request to https://github.com/elastic/beats/
+<p> - add new visualisation as json:
 
 ![](_images/squid_downloaded_per_host.png.png)
