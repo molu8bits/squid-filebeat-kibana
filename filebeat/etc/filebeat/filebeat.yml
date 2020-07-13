@@ -18,8 +18,11 @@ setup.dashboards.enabled: true
 
 setup.template.enabled: true
 setup.template.json.enabled: false
+
+# Both two lines are required to add
+setup.template.fields: "${path.config}/fields.yml"
 setup.template.overwrite: true
 
-
+# string "eleasticsearch.local" must be replaced with Elasticsearch IP/Host
 output.elasticsearch:
   hosts: ["elasticsearch.local:9200"]
