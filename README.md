@@ -48,6 +48,6 @@ systemctl restart filebeat
 ```
 
 <p>Module has been tested with latest Elasticsearch/Kibana 7.9 based on docker-compose stack:
-[https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html)
+https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html
 In case of trouble such quick clean installation of ELK is recommended to test filebeat configuration.
 
