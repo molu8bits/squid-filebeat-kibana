@@ -27,7 +27,7 @@ Get overview of Squid access log using Kibana dashboard.
    <p>f.) restart Filebeat service - "systemctl restart filebeat"
 
 <h4>Kibana configuration </h4>
-3. Import Dashboard definition from kibana folder Kibana (via GUI: Management -> Saved Objects -> import) 
+3. Import Dashboard definition from kibana folder Kibana (*.ndjson file via GUI: Management -> Stack Management -> Kibana -> Saved Objects -> Import) 
 
 <h4> Check Dashboard view on Kibana </h4>
 4. Go to the Dashboard section and find "[Filebeat Squid] Access log". Set Time-Range according to expected log entries.
@@ -47,7 +47,7 @@ curl -XDELETE elasticsearch.local:9200/_ingest/pipeline/filebeat*squid*
 systemctl restart filebeat
 ```
 
-<h4> TODO: </h4>
-
-<p> - add required elements by Elastic Beats and create pull request to https://github.com/elastic/beats/ - inprogress
+<p>Module has been tested with latest Elasticsearch/Kibana 7.9 based on docker-compose stack:
+[https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html](https://www.elastic.co/guide/en/elasticsearch/reference/7.9/docker.html)
+In case of trouble such quick clean installation of ELK is recommended to test filebeat configuration.
 
